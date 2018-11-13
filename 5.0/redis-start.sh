@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #redis工作目录,取第一个参数,否则默认pwd目录
-workdir="${workdir:-$(pwd)}"
-host_ip=${2}
+workdir="${1:-$(pwd)}"
+host_ip="$2"
 echo "Redis work dir: ${workdir}"
 
 #挂载目录是否存在
@@ -16,7 +16,7 @@ if [ ! -w ${workdir}/data ]; then
   chmod -R 777 ${workdir}/data
 fi
 
-if [ ! host_ip ]; then
+if [ ! $host_ip ]; then
   #获取本机ip
   if [ $(which ip)]; then
     host_ip=$(ip route | awk '/default/ { print $9 }')
