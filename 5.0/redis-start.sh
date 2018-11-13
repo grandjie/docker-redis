@@ -31,7 +31,7 @@ fi
 
 echo "启动Redis cluster节点, 绑定Ip:${host_ip}, 挂载目录:${workdir}/data"
 
-sudo docker run \
+docker run \
      -v ${workdir}/redis.conf:/usr/local/etc/redis/redis.conf \
      -v ${workdir}/data:/redis/ \
      --name redis \
