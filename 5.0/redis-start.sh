@@ -18,7 +18,7 @@ fi
 
 if [ ! $host_ip ]; then
   #获取本机ip
-  if [ $(which ip)]; then
+  if [ $(which ip) ]; then
     host_ip=$(ip route | awk '/default/ { print $9 }')
   else
     host_ip=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
@@ -31,7 +31,7 @@ fi
 
 echo "启动Redis cluster节点, 绑定Ip:${host_ip}, 挂载目录:${workdir}/data"
 
-docker run \
+sudo docker run \
      -v ${workdir}/redis.conf:/usr/local/etc/redis/redis.conf \
      -v ${workdir}/data:/redis/ \
      --name redis \
