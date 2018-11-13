@@ -35,6 +35,7 @@ sudo docker run \
      -v ${workdir}/redis.conf:/usr/local/etc/redis/redis.conf \
      -v ${workdir}/data:/redis/ \
      --name redis \
+     -d \
      --privileged=true \
      --rm \
      --net host \
